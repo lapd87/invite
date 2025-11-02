@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>November</title>
+    <title>Grand Invite</title>
     <style>
         * {
             box-sizing: border-box;
@@ -110,7 +110,10 @@
     </style>
 </head>
 <body>
-<div id="header">November</div>
+<div id="header">
+    <script src="https://cdn.logwork.com/widget/countdown.js"></script>
+    <a href="https://logwork.com/countdown-timer" class="countdown-timer" data-width="650" data-timezone="Europe/Sofia" data-language="bg" data-date="2025-11-16 14:00">ОСТАВА САМО</a>
+</div>
 <div id="content">
     <div id="initialView">
         <div id="imageContainer">
@@ -126,7 +129,7 @@
     </div>
     <div id="mapsView">
         <div id="mapsContainer">
-            <iframe id="mapsIframe" src=""></iframe>
+            <iframe id="mapsIframe" src="" title="Google Maps Directions" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
     </div>
 </div>
@@ -150,9 +153,12 @@
         initialView.style.display = 'none';
         header.style.display = 'block';
         mapsView.style.display = 'flex';
-        // Replace with your Google Maps shared directions URL
-        const mapsUrl = 'https://maps.app.goo.gl/XEY8ZDNT4N4H1cAG6?g_st=av';
-        mapsIframe.src = mapsUrl;
+        // Use a Google Maps EMBED URL (not /dir/): Generate from https://www.google.com/maps (Share > Embed a map)
+        // Example: https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d... (full embed pb param)
+
+
+        const mapsEmbedUrl = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8208.00335594213!2d25.96942294169549!3d43.66208851913708!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40aef103e5196a39%3A0xd14ff8473f1c4309!2z0JrRitGJ0LAg0LfQsCDQs9C-0YHRgtC4ICLQnNC40LvQutC-0LLQsNGC0LAg0LrRitGJ0LAi!5e1!3m2!1sbg!2sbg!4v1762115035681!5m2!1sbg!2sbg';
+        mapsIframe.src = mapsEmbedUrl;
     });
 </script>
 </body>

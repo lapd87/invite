@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>November</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        #header {
+            color: #333;
+            font-size: 2em;
+            margin-bottom: 10px;
+            display: none;
+        }
+        #content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+        }
+        #initialView {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+        }
+        #imageContainer {
+            position: relative;
+            width: 100%;
+            height: 70vh;
+            max-width: 400px; /* Portrait aspect, adjust as needed */
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #mainImage {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            display: block;
+        }
+        #openButton {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #openButton:hover {
+            background-color: #0056b3;
+        }
+        #videoOverlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
+        #videoPlayer {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+        }
+        #mapsView {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+        }
+        #mapsContainer {
+            width: 100%;
+            height: 80vh;
+            max-width: 800px;
+        }
+        #mapsIframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="header">November</div>
+<div id="content">
+    <div id="initialView">
+        <div id="imageContainer">
+            <img id="mainImage" src="https://uca00c677150e71da0883b46acd4.previews.dropboxusercontent.com/p/thumb/ACz8GdGUu1g5v82qMHIh3hm7rdnWa9IpWrTdvARL7jbuKutES-n_LQoReTbnO9Jd-vc56lSbm8JvPRdNsJkIiVOr8bW6B6JYPxy7Sx11bKrJf8lW5h-JXcbPlxMAGyNU_Q6BcQmYxLc7yySw7eNjduA4fJUt8KQ0_TE7X8_BicRuBce8K__bVlyp9XmEGxxAnB6M6bE_Jq3BcAYTKWi-w6lDUd0kqQO9-Bmwels6t_KJTRsbBDsCB3ZG3BAu18X0o7HVuVZjHS8KueyGe1jPbJlixp2m3IiGfQ0RUCx66gx7oVqP5prVBzeCszcr94gVyIxGqh7tzXBF1bSeZg7Ml7YbKEdp-ySf9DQDnqtc1oDIFgI9m7aiq0NPkt_kRRWcsr88FRB1f04CuMjbYIOJ6eWp/p.jpeg?is_prewarmed=true" alt="Main Image">
+            <div id="videoOverlay">
+                <video id="videoPlayer" controls>
+                    <source src="https://uce93df831ab3d0241c2b225b1fb.dl.dropboxusercontent.com/cd/0/inline/C0Yd9GBreLyU3fSOqYtzrNjwpFXZKnwK2-jeF_uCrwdiO2GczUFLT3AlcmY6Xg4hrIdqMHkKN0xYZvHZUbv585k3Hc80Od9Rd9rIT9WZkvv5jaOJiitJCjuJuZHX4YXFAOA/file#" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+        <button id="openButton">Open</button>
+    </div>
+    <div id="mapsView">
+        <div id="mapsContainer">
+            <iframe id="mapsIframe" src=""></iframe>
+        </div>
+    </div>
+</div>
+
+<script>
+    const header = document.getElementById('header');
+    const initialView = document.getElementById('initialView');
+    const mapsView = document.getElementById('mapsView');
+    const mapsIframe = document.getElementById('mapsIframe');
+    const openButton = document.getElementById('openButton');
+    const videoOverlay = document.getElementById('videoOverlay');
+    const videoPlayer = document.getElementById('videoPlayer');
+
+    openButton.addEventListener('click', () => {
+        videoOverlay.style.display = 'flex';
+        videoPlayer.play();
+    });
+
+    videoPlayer.addEventListener('ended', () => {
+        videoOverlay.style.display = 'none';
+        initialView.style.display = 'none';
+        header.style.display = 'block';
+        mapsView.style.display = 'flex';
+        // Replace with your Google Maps shared directions URL
+        const mapsUrl = 'https://maps.app.goo.gl/XEY8ZDNT4N4H1cAG6?g_st=av';
+        mapsIframe.src = mapsUrl;
+    });
+</script>
+</body>
+</html>
